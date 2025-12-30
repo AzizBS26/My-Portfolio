@@ -35,7 +35,8 @@ import {
   Building2,
   PawPrint,
   Smartphone,
-  Rocket
+  Rocket,
+  Folder
 } from 'lucide-react'
 import { 
   FaAws,
@@ -69,28 +70,66 @@ const PERSONAL_INFO = {
 }
 
 const SKILLS = {
-  programming: [
-    { name: 'Python', level: 90 },
-    { name: 'SQL', level: 85 },
-    { name: 'R', level: 50 },
-    { name: 'C++', level: 70 },
-    { name: 'C', level: 75 },
-    { name: 'Java', level: 75 }
+  'Programming Languages': [
+    { name: 'Python', icon: '🐍' },
+    { name: 'C', icon: '©' },
+    { name: 'C++', icon: '⚡' },
+    { name: 'Java', icon: '☕' },
+    { name: 'JavaScript', icon: 'JS' },
+    { name: 'PHP', icon: '🐘' },
+    { name: '.NET', icon: '#' },
+    { name: 'R', icon: 'R' }
   ],
-  ml_ai: [
-    { name: 'Machine Learning', level: 85 },
-    { name: 'Deep Learning', level: 70 },
-    { name: 'NLP', level: 65 },
-    { name: 'Computer Vision', level: 30 }
+  'Artificial Intelligence & Machine Learning': [
+    { name: 'TensorFlow', icon: '🧠' },
+    { name: 'PyTorch', icon: '🔥' },
+    { name: 'Scikit-learn', icon: '📊' },
+    { name: 'Pandas', icon: '🐼' },
+    { name: 'NumPy', icon: '🔢' },
+    { name: 'OpenCV', icon: '👁' },
+    { name: 'NLP', icon: '💬' },
+    { name: 'RAG', icon: '🤖' }
   ],
-  tools: [
-    { name: 'TensorFlow', level: 75 },
-    { name: 'PyTorch', level: 70 },
-    { name: 'Scikit-learn', level: 85 },
-    { name: 'Pandas', level: 90 },
-    { name: 'NumPy', level: 85 },
-    { name: 'Matplotlib', level: 80 },
-    { name: 'Power BI', level: 65 }
+  'Databases & Data': [
+    { name: 'SQL/MySQL', icon: '🗄️' },
+    { name: 'MongoDB', icon: '🍃' },
+    { name: 'PostgreSQL', icon: '🐘' },
+    { name: 'Oracle', icon: '⭕' },
+    { name: 'Power BI', icon: '📊' }
+  ],
+  'Frontend Technologies': [
+    { name: 'HTML5', icon: '🌐' },
+    { name: 'CSS3', icon: '🎨' },
+    { name: 'React.js', icon: '⚛' },
+    { name: 'Angular', icon: '🅰' },
+    { name: 'Next.js', icon: 'N' }
+  ],
+  'Backend Frameworks': [
+    { name: 'Node.js', icon: '🟢' },
+    { name: 'Express.js', icon: 'E' },
+    { name: 'NestJS', icon: '🪺' },
+    { name: 'Spring Boot', icon: '🍃' },
+    { name: 'Symfony', icon: 'S' }
+  ],
+  'Cloud & DevOps': [
+    { name: 'Docker', icon: '🐳' },
+    { name: 'AWS', icon: '🟧' },
+    { name: 'Git/GitHub', icon: '🔀' },
+    { name: 'CI/CD', icon: '♻' }
+  ],
+  'Development Tools': [
+    { name: 'VS Code', icon: '💻' },
+    { name: 'IntelliJ IDEA', icon: '🧩' },
+    { name: 'Teams', icon: '👥' },
+    { name: 'Jupyter', icon: '📓' }
+  ],
+  'Soft Skills': [
+    { name: 'Analytic Thinking', icon: '🧠' },
+    { name: 'Team Work', icon: '👥' },
+    { name: 'Communication', icon: '💬' },
+    { name: 'Adaptability', icon: '🔄' },
+    { name: 'Problem Solving', icon: '💡' },
+    { name: 'Time Management', icon: '⏰' }
   ]
 }
 
@@ -384,6 +423,14 @@ const ACTIVITIES: Array<{
     date: 'February 2024',
     image: '/activities/rasrobots2.0.jpg',
     description: 'Continued as an Organizing Committee member for the second edition of ESPRIT RAS ROBOTS, overseeing logistics, participant coordination, and ensuring a successful event that further established the competition as a premier robotics showcase.'
+  },
+  {
+    title: 'IAS Tunisian Annual Meeting 3.0',
+    org: 'IEEE Industry Applications Society Tunisia',
+    role: 'Tech Challenge Winner',
+    date: 'October 2022',
+    image: '/activities/IASTAM3.0.jpg',
+    description: 'Participated in the IAS Tunisian Annual Meeting 3.0 and won 1st place in the tech challenge, demonstrating excellence in technical problem-solving and innovation.'
   }
 ]
 
@@ -420,19 +467,11 @@ function ThemeToggle() {
 
 // ============= COMPONENTS =============
 
-function SkillBar({ name, level }: { name: string; level: number }) {
+function SkillBadge({ name, icon }: { name: string; icon: string }) {
   return (
-    <div className="space-y-3">
-      <div className="flex justify-between items-center">
-        <span className="font-semibold text-sm">{name}</span>
-        <span className="text-xs font-medium text-accent">{level}%</span>
-      </div>
-      <div className="h-3 bg-secondary/50 rounded-full overflow-hidden border border-border">
-        <div
-          className="skill-bar-gradient h-full transition-all duration-1000 ease-out shadow-lg"
-          style={{ width: `${level}%` }}
-        />
-      </div>
+    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 hover:bg-secondary/80 border border-border hover:border-accent/50 transition-all cursor-default group">
+      <span className="text-lg group-hover:scale-110 transition-transform">{icon}</span>
+      <span className="text-sm font-medium">{name}</span>
     </div>
   )
 }
@@ -474,23 +513,24 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
   )
 }
 
-function SkillSection({ title, icon: Icon, skills }: {
+function SkillCategory({ title, skills }: {
   title: string
-  icon: any
-  skills: typeof SKILLS.programming
+  skills: Array<{ name: string; icon: string }>
 }) {
   return (
-    <Card className="h-full">
+    <Card className="h-full card-hover">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Icon className="h-5 w-5 text-primary" />
+        <CardTitle className="text-lg font-semibold flex items-center gap-2">
+          <Folder className="h-5 w-5 text-accent" />
           {title}
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        {skills.map((skill) => (
-          <SkillBar key={skill.name} name={skill.name} level={skill.level} />
-        ))}
+      <CardContent>
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <SkillBadge key={skill.name} name={skill.name} icon={skill.icon} />
+          ))}
+        </div>
       </CardContent>
     </Card>
   )
@@ -648,14 +688,22 @@ export default function PortfolioPage() {
             <Badge variant="secondary" className="mb-4">Expertise</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Skills & Technologies</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Proficient in a wide range of data science tools and technologies
+              Proficient in a wide range of programming languages, frameworks, and development tools
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <SkillSection title="Programming" icon={Code} skills={SKILLS.programming} />
-            <SkillSection title="ML & AI" icon={Brain} skills={SKILLS.ml_ai} />
-            <SkillSection title="Tools & Frameworks" icon={Database} skills={SKILLS.tools} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Object.entries(SKILLS).slice(0, 3).map(([category, skills]) => (
+              <SkillCategory key={category} title={category} skills={skills} />
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button size="lg" variant="outline" className="gap-2 btn-glow" asChild>
+              <a href="/skills">
+                View All Skills <ChevronRight className="h-5 w-5" />
+              </a>
+            </Button>
           </div>
         </div>
       </section>

@@ -67,6 +67,14 @@ const ACTIVITIES: Array<{
     date: 'February 2024',
     image: '/activities/rasrobots2.0.jpg',
     description: 'Continued as an Organizing Committee member for the second edition of ESPRIT RAS ROBOTS, overseeing logistics, participant coordination, and ensuring a successful event that further established the competition as a premier robotics showcase.'
+  },
+  {
+    title: 'IAS Tunisian Annual Meeting 3.0',
+    org: 'IEEE Industry Applications Society Tunisia',
+    role: 'Tech Challenge Winner',
+    date: 'October 2022',
+    image: '/activities/IASTAM3.0.jpg',
+    description: 'Participated in the IAS Tunisian Annual Meeting 3.0 and won 1st place in the tech challenge, demonstrating excellence in technical problem-solving and innovation.'
   }
 ]
 
