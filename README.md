@@ -210,5 +210,3 @@ MIT License - Feel free to use this for your portfolio
 For any questions about the portfolio, feel free to reach out!
 
 ---
-
-**Built with ❤️ using Next.js, React, and Tailwind CSS**
