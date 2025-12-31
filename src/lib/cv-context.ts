@@ -98,9 +98,10 @@ I am a Data Science and AI enthusiast passionate about building intelligent solu
 - Developed a chatbot using Retrieval Augmented Generation for context-aware responses
 - Technologies: Python, LangChain, Vector Databases, LLMs
 
-### Computer Vision - Object Detection
-- Built an object detection system for real-time image analysis
-- Technologies: Python, OpenCV, TensorFlow, YOLO
+### Deep Learning – Cancer Detection
+- Developed a CNN for multi-class medical image classification with custom augmentation and optimization
+- Implemented training-validation pipelines to improve accuracy and generalization on real-world datasets
+- Technologies: Python, TensorFlow, Keras, OpenCV
 
 ### Sentiment Analysis Tool
 - Created an NLP-based tool for social media sentiment analysis
