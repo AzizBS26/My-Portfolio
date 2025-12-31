@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   keywords: ["Data Science", "AI", "Machine Learning", "LLM", "Deep Learning", "NLP", "Computer Vision", "Portfolio"],
   authors: [{ name: "Mohamed Aziz Ben Slima" }],
   icons: {
-    icon: '/logo-pt.svg',
+    icon: '/logo-AB.svg',
   },
   openGraph: {
     title: "Mohamed Aziz Ben Slima - Data Science & AI Portfolio",

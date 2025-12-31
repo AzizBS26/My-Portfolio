@@ -14,8 +14,7 @@ import {
   Award,
   ChevronRight,
   ExternalLink,
-  Smartphone,
-  Building2
+  BarChart3
 } from 'lucide-react'
 import { HiScale } from 'react-icons/hi'
 
@@ -33,7 +32,7 @@ const INTERNSHIPS = [
       'Developed interactive Power BI dashboards that accelerated operational decision-making'
     ],
     technologies: ['ETL', 'Power BI', 'Machine Learning', 'Python', 'SQL'],
-    icon: <Smartphone className="w-8 h-8 text-accent" />
+    icon: <BarChart3 className="w-8 h-8 text-accent" />
   },
   {
     title: 'AI Intern',
@@ -64,7 +63,7 @@ const INTERNSHIPS = [
       'Collaborated with cross-functional teams to optimize workflows and deliver actionable insights'
     ],
     technologies: ['Talend', 'ETL', 'Power BI', 'SQL', 'Data Analysis'],
-    icon: <Building2 className="w-8 h-8 text-accent" />
+    icon: <BarChart3 className="w-8 h-8 text-accent" />
   }
 ]
 

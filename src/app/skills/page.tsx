@@ -5,76 +5,113 @@ import Link from 'next/link'
 import Navbar from '@/components/navbar'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { ChevronRight, Folder } from 'lucide-react'
+import { ChevronRight, Folder, Brain, Users, MessageSquare, RefreshCw, Lightbulb, Clock, Code, BarChart3 } from 'lucide-react'
+import {
+  FaAws,
+  FaGithub,
+  FaPython,
+  FaRobot,
+  FaBrain as FaBrainIcon,
+  FaJava,
+  FaPhp
+} from 'react-icons/fa'
+import {
+  SiTensorflow,
+  SiPytorch,
+  SiOpencv,
+  SiPython,
+  SiCplusplus,
+  SiDotnet,
+  SiR,
+  SiHtml5,
+  SiCss3,
+  SiReact,
+  SiAngular,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiSpringboot,
+  SiSymfony,
+  SiScikitlearn,
+  SiPandas,
+  SiNumpy,
+  SiMysql,
+  SiMongodb,
+  SiPostgresql,
+  SiOracle,
+  SiDocker,
+  SiJenkins,
+  SiIntellijidea,
+  SiJupyter
+} from 'react-icons/si'
+import { TbLetterC } from 'react-icons/tb'
 
 const SKILLS = {
   'Programming Languages': [
-    { name: 'Python', icon: '🐍' },
-    { name: 'C', icon: '©' },
-    { name: 'C++', icon: '⚡' },
-    { name: 'Java', icon: '☕' },
-    { name: 'JavaScript', icon: 'JS' },
-    { name: 'PHP', icon: '🐘' },
-    { name: '.NET', icon: '#' },
-    { name: 'R', icon: 'R' }
+    { name: 'Python', icon: <SiPython className="w-5 h-5 text-yellow-400" /> },
+    { name: 'C', icon: <TbLetterC className="w-5 h-5 text-blue-500" /> },
+    { name: 'C++', icon: <SiCplusplus className="w-5 h-5 text-blue-500" /> },
+    { name: 'Java', icon: <FaJava className="w-5 h-5 text-orange-500" /> },
+    { name: 'PHP', icon: <FaPhp className="w-5 h-5 text-indigo-500" /> },
+    { name: '.NET', icon: <SiDotnet className="w-5 h-5 text-purple-500" /> },
+    { name: 'R', icon: <SiR className="w-5 h-5 text-sky-500" /> }
   ],
   'Artificial Intelligence & Machine Learning': [
-    { name: 'TensorFlow', icon: '🧠' },
-    { name: 'PyTorch', icon: '🔥' },
-    { name: 'Scikit-learn', icon: '📊' },
-    { name: 'Pandas', icon: '🐼' },
-    { name: 'NumPy', icon: '🔢' },
-    { name: 'OpenCV', icon: '👁' },
-    { name: 'NLP', icon: '💬' },
-    { name: 'RAG', icon: '🤖' }
+    { name: 'TensorFlow', icon: <SiTensorflow className="w-5 h-5 text-orange-400" /> },
+    { name: 'PyTorch', icon: <SiPytorch className="w-5 h-5 text-orange-500" /> },
+    { name: 'Scikit-learn', icon: <SiScikitlearn className="w-5 h-5 text-amber-500" /> },
+    { name: 'Pandas', icon: <SiPandas className="w-5 h-5 text-purple-600" /> },
+    { name: 'NumPy', icon: <SiNumpy className="w-5 h-5 text-blue-500" /> },
+    { name: 'OpenCV', icon: <SiOpencv className="w-5 h-5 text-green-500" /> },
+    { name: 'NLP', icon: <FaBrainIcon className="w-5 h-5 text-pink-500" /> },
+    { name: 'RAG', icon: <FaRobot className="w-5 h-5 text-emerald-500" /> }
   ],
   'Databases & Data': [
-    { name: 'SQL/MySQL', icon: '🗄️' },
-    { name: 'MongoDB', icon: '🍃' },
-    { name: 'PostgreSQL', icon: '🐘' },
-    { name: 'Oracle', icon: '⭕' },
-    { name: 'Power BI', icon: '📊' }
+    { name: 'SQL/MySQL', icon: <SiMysql className="w-5 h-5 text-blue-600" /> },
+    { name: 'MongoDB', icon: <SiMongodb className="w-5 h-5 text-green-600" /> },
+    { name: 'PostgreSQL', icon: <SiPostgresql className="w-5 h-5 text-sky-700" /> },
+    { name: 'Oracle', icon: <SiOracle className="w-5 h-5 text-red-500" /> },
+    { name: 'Power BI', icon: <BarChart3 className="w-5 h-5 text-yellow-500" /> }
   ],
   'Frontend Technologies': [
-    { name: 'HTML5', icon: '🌐' },
-    { name: 'CSS3', icon: '🎨' },
-    { name: 'React.js', icon: '⚛' },
-    { name: 'Angular', icon: '🅰' },
-    { name: 'Next.js', icon: 'N' }
+    { name: 'HTML5', icon: <SiHtml5 className="w-5 h-5 text-orange-500" /> },
+    { name: 'CSS3', icon: <SiCss3 className="w-5 h-5 text-blue-500" /> },
+    { name: 'React.js', icon: <SiReact className="w-5 h-5 text-cyan-400" /> },
+    { name: 'Angular', icon: <SiAngular className="w-5 h-5 text-red-500" /> },
+    { name: 'Next.js', icon: <SiNextdotjs className="w-5 h-5 text-foreground" /> }
   ],
   'Backend Frameworks': [
-    { name: 'Node.js', icon: '🟢' },
-    { name: 'Express.js', icon: 'E' },
-    { name: 'NestJS', icon: '🪺' },
-    { name: 'Spring Boot', icon: '🍃' },
-    { name: 'Symfony', icon: 'S' }
+    { name: 'Node.js', icon: <SiNodedotjs className="w-5 h-5 text-green-500" /> },
+    { name: 'Express.js', icon: <SiExpress className="w-5 h-5 text-foreground" /> },
+    { name: 'Spring Boot', icon: <SiSpringboot className="w-5 h-5 text-green-600" /> },
+    { name: 'Symfony', icon: <SiSymfony className="w-5 h-5 text-foreground" /> }
   ],
   'Cloud & DevOps': [
-    { name: 'Docker', icon: '🐳' },
-    { name: 'AWS', icon: '🟧' },
-    { name: 'Git/GitHub', icon: '🔀' },
-    { name: 'CI/CD', icon: '♻' }
+    { name: 'Docker', icon: <SiDocker className="w-5 h-5 text-blue-500" /> },
+    { name: 'AWS', icon: <FaAws className="w-5 h-5 text-orange-500" /> },
+    { name: 'Git/GitHub', icon: <FaGithub className="w-5 h-5" /> },
+    { name: 'CI/CD', icon: <SiJenkins className="w-5 h-5 text-red-500" /> }
   ],
   'Development Tools': [
-    { name: 'VS Code', icon: '💻' },
-    { name: 'IntelliJ IDEA', icon: '🧩' },
-    { name: 'Teams', icon: '👥' },
-    { name: 'Jupyter', icon: '📓' }
+    { name: 'VS Code', icon: <Code className="w-5 h-5 text-blue-500" /> },
+    { name: 'IntelliJ IDEA', icon: <SiIntellijidea className="w-5 h-5 text-purple-600" /> },
+    { name: 'Teams', icon: <Users className="w-5 h-5 text-purple-500" /> },
+    { name: 'Jupyter', icon: <SiJupyter className="w-5 h-5 text-orange-500" /> }
   ],
   'Soft Skills': [
-    { name: 'Analytic Thinking', icon: '🧠' },
-    { name: 'Team Work', icon: '👥' },
-    { name: 'Communication', icon: '💬' },
-    { name: 'Adaptability', icon: '🔄' },
-    { name: 'Problem Solving', icon: '💡' },
-    { name: 'Time Management', icon: '⏰' }
+    { name: 'Analytic Thinking', icon: <Brain className="w-5 h-5 text-accent" /> },
+    { name: 'Team Work', icon: <Users className="w-5 h-5 text-accent" /> },
+    { name: 'Communication', icon: <MessageSquare className="w-5 h-5 text-accent" /> },
+    { name: 'Adaptability', icon: <RefreshCw className="w-5 h-5 text-accent" /> },
+    { name: 'Problem Solving', icon: <Lightbulb className="w-5 h-5 text-accent" /> },
+    { name: 'Time Management', icon: <Clock className="w-5 h-5 text-accent" /> }
   ]
 }
 
-function SkillBadge({ name, icon }: { name: string; icon: string }) {
+function SkillBadge({ name, icon }: { name: string; icon: React.ReactNode }) {
   return (
     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 hover:bg-secondary/80 border border-border hover:border-accent/50 transition-all cursor-default group">
-      <span className="text-lg group-hover:scale-110 transition-transform">{icon}</span>
+      <span className="text-lg group-hover:scale-110 transition-transform flex items-center">{icon}</span>
       <span className="text-sm font-medium">{name}</span>
     </div>
   )
@@ -82,7 +119,7 @@ function SkillBadge({ name, icon }: { name: string; icon: string }) {
 
 function SkillCategory({ title, skills }: {
   title: string
-  skills: Array<{ name: string; icon: string }>
+  skills: Array<{ name: string; icon: React.ReactNode }>
 }) {
   return (
     <Card className="h-full card-hover">

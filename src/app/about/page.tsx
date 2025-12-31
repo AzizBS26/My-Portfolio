@@ -184,7 +184,7 @@ export default function AboutPage() {
                 <p>• Model Fine-tuning</p>
                 <p>• AI Pipeline Design</p>
                 <p>• Data Analysis</p>
-                <p>• Full-stack Development</p>
+                <p>• AI Engineering</p>
               </CardContent>
             </Card>
 

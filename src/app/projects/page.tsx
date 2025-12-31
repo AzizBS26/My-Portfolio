@@ -65,7 +65,7 @@ const PROJECTS = {
       description: 'Optimized ETL pipelines for SOS credit transactions, reducing processing time. Developed interactive Power BI dashboards that accelerated operational decision-making. Built churn prediction models with 87% accuracy.',
       tech: ['ETL', 'Power BI', 'ML', 'Churn Prediction'],
       link: '#',
-      icon: <Smartphone className="w-10 h-10" />,
+      icon: <BarChart3 className="w-10 h-10" />,
       dates: 'Jul 2025 - Sep 2025',
       company: 'Tunisie Telecom'
     },
@@ -83,7 +83,7 @@ const PROJECTS = {
       description: 'Built ETL pipelines using Talend, improving data quality and reducing errors. Created dashboards and reports in Power BI, enabling faster trend analysis and business insights.',
       tech: ['Talend', 'ETL', 'Power BI', 'SQL'],
       link: '#',
-      icon: <Building2 className="w-10 h-10" />,
+      icon: <BarChart3 className="w-10 h-10" />,
       dates: 'Jun 2024 - Aug 2024',
       company: 'Attijari Bank'
     }

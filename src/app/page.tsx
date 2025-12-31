@@ -36,7 +36,13 @@ import {
   PawPrint,
   Smartphone,
   Rocket,
-  Folder
+  Folder,
+  Calendar,
+  MapPin,
+  Users,
+  RefreshCw,
+  Lightbulb,
+  Clock
 } from 'lucide-react'
 import { 
   FaAws,
@@ -46,14 +52,41 @@ import {
   FaRobot,
   FaCertificate,
   FaAward,
-  FaBrain
+  FaBrain,
+  FaJava,
+  FaPhp
 } from 'react-icons/fa'
 import {
   SiTensorflow,
   SiPytorch,
   SiOpencv,
-  SiNvidia
+  SiNvidia,
+  SiPython,
+  SiCplusplus,
+  SiDotnet,
+  SiR,
+  SiHtml5,
+  SiCss3,
+  SiReact,
+  SiAngular,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiSpringboot,
+  SiSymfony,
+  SiScikitlearn,
+  SiPandas,
+  SiNumpy,
+  SiMysql,
+  SiMongodb,
+  SiPostgresql,
+  SiOracle,
+  SiDocker,
+  SiJenkins,
+  SiIntellijidea,
+  SiJupyter
 } from 'react-icons/si'
+import { TbLetterC } from 'react-icons/tb'
 import { HiScale } from 'react-icons/hi'
 
 // ============= CUSTOMIZABLE DATA =============
@@ -71,67 +104,107 @@ const PERSONAL_INFO = {
 
 const SKILLS = {
   'Programming Languages': [
-    { name: 'Python', icon: '🐍' },
-    { name: 'C', icon: '©' },
-    { name: 'C++', icon: '⚡' },
-    { name: 'Java', icon: '☕' },
-    { name: 'JavaScript', icon: 'JS' },
-    { name: 'PHP', icon: '🐘' },
-    { name: '.NET', icon: '#' },
-    { name: 'R', icon: 'R' }
+    { name: 'Python', icon: <SiPython className="w-5 h-5 text-yellow-400" /> },
+    { name: 'C', icon: <TbLetterC className="w-5 h-5 text-blue-500" /> },
+    { name: 'C++', icon: <SiCplusplus className="w-5 h-5 text-blue-500" /> },
+    { name: 'Java', icon: <FaJava className="w-5 h-5 text-orange-500" /> },
+    { name: 'PHP', icon: <FaPhp className="w-5 h-5 text-indigo-500" /> },
+    { name: '.NET', icon: <SiDotnet className="w-5 h-5 text-purple-500" /> },
+    { name: 'R', icon: <SiR className="w-5 h-5 text-sky-500" /> }
   ],
   'Artificial Intelligence & Machine Learning': [
-    { name: 'TensorFlow', icon: '🧠' },
-    { name: 'PyTorch', icon: '🔥' },
-    { name: 'Scikit-learn', icon: '📊' },
-    { name: 'Pandas', icon: '🐼' },
-    { name: 'NumPy', icon: '🔢' },
-    { name: 'OpenCV', icon: '👁' },
-    { name: 'NLP', icon: '💬' },
-    { name: 'RAG', icon: '🤖' }
+    { name: 'TensorFlow', icon: <SiTensorflow className="w-5 h-5 text-orange-400" /> },
+    { name: 'PyTorch', icon: <SiPytorch className="w-5 h-5 text-orange-500" /> },
+    { name: 'Scikit-learn', icon: <SiScikitlearn className="w-5 h-5 text-amber-500" /> },
+    { name: 'Pandas', icon: <SiPandas className="w-5 h-5 text-purple-600" /> },
+    { name: 'NumPy', icon: <SiNumpy className="w-5 h-5 text-blue-500" /> },
+    { name: 'OpenCV', icon: <SiOpencv className="w-5 h-5 text-green-500" /> },
+    { name: 'NLP', icon: <FaBrain className="w-5 h-5 text-pink-500" /> },
+    { name: 'RAG', icon: <FaRobot className="w-5 h-5 text-emerald-500" /> }
   ],
   'Databases & Data': [
-    { name: 'SQL/MySQL', icon: '🗄️' },
-    { name: 'MongoDB', icon: '🍃' },
-    { name: 'PostgreSQL', icon: '🐘' },
-    { name: 'Oracle', icon: '⭕' },
-    { name: 'Power BI', icon: '📊' }
+    { name: 'SQL/MySQL', icon: <SiMysql className="w-5 h-5 text-blue-600" /> },
+    { name: 'MongoDB', icon: <SiMongodb className="w-5 h-5 text-green-600" /> },
+    { name: 'PostgreSQL', icon: <SiPostgresql className="w-5 h-5 text-sky-700" /> },
+    { name: 'Oracle', icon: <SiOracle className="w-5 h-5 text-red-500" /> },
+    { name: 'Power BI', icon: <BarChart3 className="w-5 h-5 text-yellow-500" /> }
   ],
   'Frontend Technologies': [
-    { name: 'HTML5', icon: '🌐' },
-    { name: 'CSS3', icon: '🎨' },
-    { name: 'React.js', icon: '⚛' },
-    { name: 'Angular', icon: '🅰' },
-    { name: 'Next.js', icon: 'N' }
+    { name: 'HTML5', icon: <SiHtml5 className="w-5 h-5 text-orange-500" /> },
+    { name: 'CSS3', icon: <SiCss3 className="w-5 h-5 text-blue-500" /> },
+    { name: 'React.js', icon: <SiReact className="w-5 h-5 text-cyan-400" /> },
+    { name: 'Angular', icon: <SiAngular className="w-5 h-5 text-red-500" /> },
+    { name: 'Next.js', icon: <SiNextdotjs className="w-5 h-5 text-foreground" /> }
   ],
   'Backend Frameworks': [
-    { name: 'Node.js', icon: '🟢' },
-    { name: 'Express.js', icon: 'E' },
-    { name: 'NestJS', icon: '🪺' },
-    { name: 'Spring Boot', icon: '🍃' },
-    { name: 'Symfony', icon: 'S' }
+    { name: 'Node.js', icon: <SiNodedotjs className="w-5 h-5 text-green-500" /> },
+    { name: 'Express.js', icon: <SiExpress className="w-5 h-5 text-foreground" /> },
+    { name: 'Spring Boot', icon: <SiSpringboot className="w-5 h-5 text-green-600" /> },
+    { name: 'Symfony', icon: <SiSymfony className="w-5 h-5 text-foreground" /> }
   ],
   'Cloud & DevOps': [
-    { name: 'Docker', icon: '🐳' },
-    { name: 'AWS', icon: '🟧' },
-    { name: 'Git/GitHub', icon: '🔀' },
-    { name: 'CI/CD', icon: '♻' }
+    { name: 'Docker', icon: <SiDocker className="w-5 h-5 text-blue-500" /> },
+    { name: 'AWS', icon: <FaAws className="w-5 h-5 text-orange-500" /> },
+    { name: 'Git/GitHub', icon: <FaGithub className="w-5 h-5" /> },
+    { name: 'CI/CD', icon: <SiJenkins className="w-5 h-5 text-red-500" /> }
   ],
   'Development Tools': [
-    { name: 'VS Code', icon: '💻' },
-    { name: 'IntelliJ IDEA', icon: '🧩' },
-    { name: 'Teams', icon: '👥' },
-    { name: 'Jupyter', icon: '📓' }
+    { name: 'VS Code', icon: <Code className="w-5 h-5 text-blue-500" /> },
+    { name: 'IntelliJ IDEA', icon: <SiIntellijidea className="w-5 h-5 text-purple-600" /> },
+    { name: 'Teams', icon: <Users className="w-5 h-5 text-purple-500" /> },
+    { name: 'Jupyter', icon: <SiJupyter className="w-5 h-5 text-orange-500" /> }
   ],
   'Soft Skills': [
-    { name: 'Analytic Thinking', icon: '🧠' },
-    { name: 'Team Work', icon: '👥' },
-    { name: 'Communication', icon: '💬' },
-    { name: 'Adaptability', icon: '🔄' },
-    { name: 'Problem Solving', icon: '💡' },
-    { name: 'Time Management', icon: '⏰' }
+    { name: 'Analytic Thinking', icon: <Brain className="w-5 h-5 text-accent" /> },
+    { name: 'Team Work', icon: <Users className="w-5 h-5 text-accent" /> },
+    { name: 'Communication', icon: <MessageSquare className="w-5 h-5 text-accent" /> },
+    { name: 'Adaptability', icon: <RefreshCw className="w-5 h-5 text-accent" /> },
+    { name: 'Problem Solving', icon: <Lightbulb className="w-5 h-5 text-accent" /> },
+    { name: 'Time Management', icon: <Clock className="w-5 h-5 text-accent" /> }
   ]
 }
+
+const PROFESSIONAL_EXPERIENCE = [
+  {
+    title: 'Data Analytics Intern',
+    company: 'Tunisie Telecom',
+    location: 'Tunis, Tunisia',
+    period: 'Jul 2025 - Sep 2025',
+    summary: 'Optimized ETL pipelines for SOS credit transactions and built interactive Power BI dashboards accelerating operational decision-making.',
+    highlights: [
+      'Churn prediction models with 87% accuracy',
+      'Reduced ETL processing time for SOS credit transactions'
+    ],
+    tech: ['ETL', 'Power BI', 'ML', 'Python', 'SQL'],
+    icon: <BarChart3 className="w-8 h-8 text-accent" />
+  },
+  {
+    title: 'AI Intern',
+    company: 'Première Consulting',
+    location: 'Tunis, Tunisia',
+    period: 'Jul 2025 - Aug 2025',
+    summary: 'Designed and deployed a multilingual legal chatbot using advanced NLP with dynamic database retrieval for accurate responses.',
+    highlights: [
+      'Improved legal query matching accuracy with NLP',
+      'Integrated RAG-style retrieval for up-to-date answers'
+    ],
+    tech: ['NLP', 'RAG', 'Python', 'Chatbot'],
+    icon: <HiScale className="w-8 h-8 text-accent" />
+  },
+  {
+    title: 'Data Analytics Intern',
+    company: 'Attijari Bank',
+    location: 'Tunis, Tunisia',
+    period: 'Jun 2024 - Aug 2024',
+    summary: 'Built Talend ETL pipelines and Power BI dashboards to improve data quality, reduce errors, and speed up trend analysis.',
+    highlights: [
+      'Improved data quality via Talend ETL',
+      'Delivered cross-team Power BI reports'
+    ],
+    tech: ['Talend', 'ETL', 'Power BI', 'SQL'],
+    icon: <BarChart3 className="w-8 h-8 text-accent" />
+  }
+]
 
 const PROJECTS = {
   academic: [
@@ -174,7 +247,7 @@ const PROJECTS = {
       description: 'Optimized ETL pipelines for SOS credit transactions, reducing processing time. Developed interactive Power BI dashboards that accelerated operational decision-making. Built churn prediction models with 87% accuracy.',
       tech: ['ETL', 'Power BI', 'ML', 'Churn Prediction'],
       link: '#',
-      icon: <Smartphone className="w-10 h-10" />,
+      icon: <BarChart3 className="w-10 h-10" />,
       dates: 'Jul 2025 - Sep 2025',
       company: 'Tunisie Telecom'
     },
@@ -192,7 +265,7 @@ const PROJECTS = {
       description: 'Built ETL pipelines using Talend, improving data quality and reducing errors. Created dashboards and reports in Power BI, enabling faster trend analysis and business insights.',
       tech: ['Talend', 'ETL', 'Power BI', 'SQL'],
       link: '#',
-      icon: <Building2 className="w-10 h-10" />,
+      icon: <BarChart3 className="w-10 h-10" />,
       dates: 'Jun 2024 - Aug 2024',
       company: 'Attijari Bank'
     }
@@ -280,7 +353,7 @@ const CERTIFICATIONS: Array<{ name: string; issuer: string; date: string; image?
   {
     name: 'Fundamentals of Deep Learning',
     issuer: 'NVIDIA Deep Learning Institute',
-    date: '2024',
+    date: '2023',
     image: '/certifications/Fundamentals of Deep Learning.jpg',
     icon: <SiNvidia className="w-6 h-6 text-green-500" />
   },
@@ -320,14 +393,14 @@ const CERTIFICATIONS: Array<{ name: string; issuer: string; date: string; image?
     icon: <img src="/icons/datacamp-svgrepo-com.svg" alt="DataCamp" className="w-6 h-6 opacity-90" />
   },
   {
-    name: 'IEEE Mondat',
+    name: 'IEEE Mandate',
     issuer: 'IEEE',
     date: '2024',
     image: '/certifications/IEEE mondat.jpg',
     icon: <img src="/icons/ieee-icon.svg" alt="IDEA" className="w-6 h-6 opacity-90" />
   },
   {
-    name: 'IEEE Memberships',
+    name: 'IEEE Membership',
     issuer: 'IEEE',
     date: '2025',
     image: '/certifications/IEEE Membership.jpg',
@@ -402,7 +475,7 @@ const ACTIVITIES: Array<{
   },
   {
     title: 'International Conference on Robotics and Automation (ICRA)',
-    org: 'IEEE ICRA',
+    org: 'IEEE ICRA, Atlanta, GA',
     role: 'IDEAS Award Travel Grant Recipient',
     date: 'May 19-23, 2025',
     image: '/activities/icra.jpg',
@@ -467,10 +540,10 @@ function ThemeToggle() {
 
 // ============= COMPONENTS =============
 
-function SkillBadge({ name, icon }: { name: string; icon: string }) {
+function SkillBadge({ name, icon }: { name: string; icon: React.ReactNode }) {
   return (
     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 hover:bg-secondary/80 border border-border hover:border-accent/50 transition-all cursor-default group">
-      <span className="text-lg group-hover:scale-110 transition-transform">{icon}</span>
+      <span className="text-lg group-hover:scale-110 transition-transform flex items-center">{icon}</span>
       <span className="text-sm font-medium">{name}</span>
     </div>
   )
@@ -515,7 +588,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
 
 function SkillCategory({ title, skills }: {
   title: string
-  skills: Array<{ name: string; icon: string }>
+  skills: Array<{ name: string; icon: React.ReactNode }>
 }) {
   return (
     <Card className="h-full card-hover">
@@ -702,6 +775,69 @@ export default function PortfolioPage() {
             <Button size="lg" variant="outline" className="gap-2 btn-glow" asChild>
               <a href="/skills">
                 View All Skills <ChevronRight className="h-5 w-5" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <Separator className="max-w-6xl mx-auto" />
+
+      {/* Professional Experience Section */}
+      <section id="experience" className="py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <Badge variant="secondary" className="mb-4">Experience</Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Professional Experience</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A snapshot of internships and roles focused on analytics, AI, and data-driven solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PROFESSIONAL_EXPERIENCE.map((role, index) => (
+              <Card key={role.title + role.company} className="card-hover h-full flex flex-col opacity-0 animate-fade-in-up" style={{ animationDelay: `${index * 0.08}s` }}>
+                <CardHeader className="space-y-3">
+                  <div className="w-fit p-3 rounded-2xl bg-accent/10 border border-accent/20 text-accent shadow-sm">
+                    {role.icon}
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl leading-tight">{role.title}</CardTitle>
+                    <CardDescription className="mt-1 flex items-center gap-2 text-sm">
+                      <Briefcase className="h-4 w-4" />
+                      <span className="font-semibold text-primary">{role.company}</span>
+                    </CardDescription>
+                    <CardDescription className="flex items-center gap-2 text-xs mt-1">
+                      <MapPin className="h-3 w-3" /> {role.location}
+                    </CardDescription>
+                    <CardDescription className="flex items-center gap-2 text-xs mt-1">
+                      <Calendar className="h-3 w-3" /> {role.period}
+                    </CardDescription>
+                  </div>
+                </CardHeader>
+                <CardContent className="flex-grow space-y-3">
+                  <p className="text-sm text-muted-foreground leading-relaxed">{role.summary}</p>
+                  <ul className="space-y-2 text-sm text-foreground/90 list-disc list-inside">
+                    {role.highlights.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+                <CardFooter className="flex flex-wrap gap-2">
+                  {role.tech.map((t) => (
+                    <Badge key={t} variant="outline" className="text-xs py-1 px-2 border-accent/40">
+                      {t}
+                    </Badge>
+                  ))}
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button size="lg" variant="outline" className="gap-2 btn-glow" asChild>
+              <a href="/experience">
+                View Full Timeline <ChevronRight className="h-5 w-5" />
               </a>
             </Button>
           </div>

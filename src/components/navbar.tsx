@@ -73,13 +73,13 @@ const Navbar = () => {
                 {/* Glowing background */}
                 <div className="absolute inset-0 bg-gradient-to-r from-accent/30 to-primary/30 rounded-xl blur-lg opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
                 {/* Logo container */}
-                <div className="relative bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/40 rounded-full w-10 h-10 flex items-center justify-center group-hover:border-accent transition-all duration-300 group-hover:scale-105">
+                <div className="relative bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/40 ring-2 ring-primary/15 rounded-full w-10 h-10 overflow-hidden flex items-center justify-center group-hover:border-accent transition-all duration-300 group-hover:scale-105">
                   <Image 
-                    src="/logo-pt.svg" 
+                    src="/logo-AB.svg" 
                     alt="Portfolio Logo" 
-                    width={24} 
-                    height={24}
-                    className="transition-transform duration-300 group-hover:scale-110"
+                    width={40} 
+                    height={40}
+                    className="rounded-full w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
               </div>
@@ -154,12 +154,13 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <div className="relative">
-              <div className="bg-gradient-to-br from-accent/20 to-primary/20 border border-accent/30 rounded-full w-10 h-10 flex items-center justify-center">
+              <div className="bg-gradient-to-br from-accent/20 to-primary/20 border border-accent/30 ring-2 ring-primary/15 rounded-full w-10 h-10 overflow-hidden flex items-center justify-center">
                 <Image 
-                  src="/logo-pt.svg" 
+                  src="/logo-AB.svg" 
                   alt="Portfolio Logo" 
-                  width={24} 
-                  height={24}
+                  width={40} 
+                  height={40}
+                  className="rounded-full w-full h-full object-contain"
                 />
               </div>
             </div>
