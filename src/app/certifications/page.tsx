@@ -105,8 +105,8 @@ const CERTIFICATIONS: Array<{ name: string; issuer: string; date: string; image?
     icon: <img src="/icons/datacamp-svgrepo-com.svg" alt="DataCamp" className="w-6 h-6 opacity-90" />
   },
   {
-    name: 'IEEE Mondat',
-    issuer: 'IEEE',
+    name: 'IEEE Mandate',
+    issuer: 'IEEE ESPRIT SB',
     date: '2024',
     image: '/certifications/IEEE mondat.jpg',
     icon: <img src="/icons/ieee-icon.svg" alt="IEEE" className="w-6 h-6 opacity-90" />
