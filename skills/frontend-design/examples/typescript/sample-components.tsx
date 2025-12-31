@@ -104,14 +104,15 @@ Button.displayName = 'Button';
 // INPUT COMPONENT
 // ============================================
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+// Omit the native `size` number prop so we can reuse it for our string-based sizing.
+type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> & {
   label?: string;
   error?: string;
   helperText?: string;
   size?: 'sm' | 'md' | 'lg';
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
-}
+};
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
