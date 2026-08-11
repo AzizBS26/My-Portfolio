@@ -2,7 +2,13 @@ import { createOpenAI } from '@ai-sdk/openai'
 import { streamText } from 'ai'
 import { CV_CONTEXT } from '@/lib/cv-context';
 
-// Simple rate limiting (in-memory, resets on deployment)
+// Per-IP request counter.
+//
+// This is NOT a real safeguard on Vercel: each serverless instance keeps its
+// own Map, so the limit applies per warm instance rather than globally, and it
+// resets on every deployment and cold start. It deters casual repeat requests
+// and nothing more. Move to Vercel KV (or any shared store) if this endpoint
+// ever needs actual abuse protection.
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 
 const RATE_LIMIT = {

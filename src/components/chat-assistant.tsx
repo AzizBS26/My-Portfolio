@@ -7,23 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { MessageCircle, X, Send, Sparkles, Download, User, Bot, Copy, Check } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
 import { SUGGESTED_QUESTIONS } from '@/lib/cv-context'
-
-// Markdown rendering helper
-const renderMarkdown = (text: string) => {
-  let html = text
-    // Bold
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    // Italic
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // List items
-    .replace(/^\* (.+)$/gm, '<li class="ml-4">$1</li>')
-  
-  // Wrap list items in ul
-  html = html.replace(/(<li class="ml-4">.*<\/li>)/m, '<ul class="list-disc ml-4">$1</ul>')
-  
-  return html
-}
 
 interface Message {
   id: string
@@ -331,14 +316,13 @@ export function ChatAssistant() {
                       : 'bg-secondary/50 rounded-tl-none'
                   }`}
                 >
-                  <div 
-                    className="text-xs md:text-sm leading-relaxed space-y-2 prose prose-invert max-w-none"
-                    dangerouslySetInnerHTML={{
-                      __html: message.role === 'assistant' 
-                        ? renderMarkdown(message.content)
-                        : message.content
-                    }}
-                  />
+                  <div className="text-xs md:text-sm leading-relaxed space-y-2 max-w-none [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_strong]:font-semibold [&_a]:underline">
+                    {message.role === 'assistant' ? (
+                      <ReactMarkdown>{message.content}</ReactMarkdown>
+                    ) : (
+                      message.content
+                    )}
+                  </div>
                 </div>
                 {message.role === 'user' && (
                   <div className="h-7 w-7 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
