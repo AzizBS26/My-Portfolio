@@ -5,108 +5,12 @@ import Link from 'next/link'
 import Navbar from '@/components/navbar'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { ChevronRight, Folder, Brain, Users, MessageSquare, RefreshCw, Lightbulb, Clock, Code, BarChart3 } from 'lucide-react'
 import {
-  FaAws,
-  FaGithub,
-  FaPython,
-  FaRobot,
-  FaBrain as FaBrainIcon,
-  FaJava,
-  FaPhp
-} from 'react-icons/fa'
-import {
-  SiTensorflow,
-  SiPytorch,
-  SiOpencv,
-  SiPython,
-  SiCplusplus,
-  SiDotnet,
-  SiR,
-  SiHtml5,
-  SiCss3,
-  SiReact,
-  SiAngular,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiExpress,
-  SiSpringboot,
-  SiSymfony,
-  SiScikitlearn,
-  SiPandas,
-  SiNumpy,
-  SiMysql,
-  SiMongodb,
-  SiPostgresql,
-  SiOracle,
-  SiDocker,
-  SiJenkins,
-  SiIntellijidea,
-  SiJupyter
-} from 'react-icons/si'
-import { TbLetterC } from 'react-icons/tb'
+  ChevronRight,
+  Folder
+} from 'lucide-react'
+import { SKILLS } from '@/data/portfolio'
 
-const SKILLS = {
-  'Programming Languages': [
-    { name: 'Python', icon: <SiPython className="w-5 h-5 text-yellow-400" /> },
-    { name: 'C', icon: <TbLetterC className="w-5 h-5 text-blue-500" /> },
-    { name: 'C++', icon: <SiCplusplus className="w-5 h-5 text-blue-500" /> },
-    { name: 'Java', icon: <FaJava className="w-5 h-5 text-orange-500" /> },
-    { name: 'PHP', icon: <FaPhp className="w-5 h-5 text-indigo-500" /> },
-    { name: '.NET', icon: <SiDotnet className="w-5 h-5 text-purple-500" /> },
-    { name: 'R', icon: <SiR className="w-5 h-5 text-sky-500" /> }
-  ],
-  'Artificial Intelligence & Machine Learning': [
-    { name: 'TensorFlow', icon: <SiTensorflow className="w-5 h-5 text-orange-400" /> },
-    { name: 'PyTorch', icon: <SiPytorch className="w-5 h-5 text-orange-500" /> },
-    { name: 'Scikit-learn', icon: <SiScikitlearn className="w-5 h-5 text-amber-500" /> },
-    { name: 'Pandas', icon: <SiPandas className="w-5 h-5 text-purple-600" /> },
-    { name: 'NumPy', icon: <SiNumpy className="w-5 h-5 text-blue-500" /> },
-    { name: 'OpenCV', icon: <SiOpencv className="w-5 h-5 text-green-500" /> },
-    { name: 'NLP', icon: <FaBrainIcon className="w-5 h-5 text-pink-500" /> },
-    { name: 'RAG', icon: <FaRobot className="w-5 h-5 text-emerald-500" /> }
-  ],
-  'Databases & Data': [
-    { name: 'SQL/MySQL', icon: <SiMysql className="w-5 h-5 text-blue-600" /> },
-    { name: 'MongoDB', icon: <SiMongodb className="w-5 h-5 text-green-600" /> },
-    { name: 'PostgreSQL', icon: <SiPostgresql className="w-5 h-5 text-sky-700" /> },
-    { name: 'Oracle', icon: <SiOracle className="w-5 h-5 text-red-500" /> },
-    { name: 'Power BI', icon: <BarChart3 className="w-5 h-5 text-yellow-500" /> }
-  ],
-  'Frontend Technologies': [
-    { name: 'HTML5', icon: <SiHtml5 className="w-5 h-5 text-orange-500" /> },
-    { name: 'CSS3', icon: <SiCss3 className="w-5 h-5 text-blue-500" /> },
-    { name: 'React.js', icon: <SiReact className="w-5 h-5 text-cyan-400" /> },
-    { name: 'Angular', icon: <SiAngular className="w-5 h-5 text-red-500" /> },
-    { name: 'Next.js', icon: <SiNextdotjs className="w-5 h-5 text-foreground" /> }
-  ],
-  'Backend Frameworks': [
-    { name: 'Node.js', icon: <SiNodedotjs className="w-5 h-5 text-green-500" /> },
-    { name: 'Express.js', icon: <SiExpress className="w-5 h-5 text-foreground" /> },
-    { name: 'Spring Boot', icon: <SiSpringboot className="w-5 h-5 text-green-600" /> },
-    { name: 'Symfony', icon: <SiSymfony className="w-5 h-5 text-foreground" /> }
-  ],
-  'Cloud & DevOps': [
-    { name: 'Docker', icon: <SiDocker className="w-5 h-5 text-blue-500" /> },
-    { name: 'AWS', icon: <FaAws className="w-5 h-5 text-orange-500" /> },
-    { name: 'Git/GitHub', icon: <FaGithub className="w-5 h-5" /> },
-    { name: 'CI/CD', icon: <SiJenkins className="w-5 h-5 text-red-500" /> }
-  ],
-  'Development Tools': [
-    { name: 'VS Code', icon: <Code className="w-5 h-5 text-blue-500" /> },
-    { name: 'IntelliJ IDEA', icon: <SiIntellijidea className="w-5 h-5 text-purple-600" /> },
-    { name: 'Teams', icon: <Users className="w-5 h-5 text-purple-500" /> },
-    { name: 'Jupyter', icon: <SiJupyter className="w-5 h-5 text-orange-500" /> }
-  ],
-  'Soft Skills': [
-    { name: 'Analytic Thinking', icon: <Brain className="w-5 h-5 text-accent" /> },
-    { name: 'Team Work', icon: <Users className="w-5 h-5 text-accent" /> },
-    { name: 'Communication', icon: <MessageSquare className="w-5 h-5 text-accent" /> },
-    { name: 'Adaptability', icon: <RefreshCw className="w-5 h-5 text-accent" /> },
-    { name: 'Problem Solving', icon: <Lightbulb className="w-5 h-5 text-accent" /> },
-    { name: 'Time Management', icon: <Clock className="w-5 h-5 text-accent" /> }
-  ]
-}
 
 function SkillBadge({ name, icon }: { name: string; icon: React.ReactNode }) {
   return (

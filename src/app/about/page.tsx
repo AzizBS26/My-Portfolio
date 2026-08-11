@@ -7,33 +7,20 @@ import Navbar from '@/components/navbar'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import { Brain, GraduationCap, Zap, ChevronRight, FileText, Download, Linkedin, Github, Mail } from 'lucide-react'
+import {
+  Brain,
+  GraduationCap,
+  Zap,
+  ChevronRight,
+  Download,
+  Linkedin,
+  Github
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { PERSONAL_INFO, EDUCATION, LANGUAGES } from '@/data/portfolio'
 
-const PERSONAL_INFO = {
-  name: 'Mohamed Aziz Ben Slima',
-  title: 'Data Science Student & AI/LLM Builder',
-  tagline: 'Building AI Agents, Fine-Tuned LLMs & Modern Web Applications',
-  email: 'mohammedaziz.benslima@esprit.tn',
-  github: 'https://github.com/AzizBS26',
-  linkedin: 'https://www.linkedin.com/in/mohamed-aziz-ben-slima',
-  bio: `I am a Data Science and AI enthusiast passionate about building intelligent solutions using large language models, fine-tuning techniques, and advanced AI tools like Ollama. I have hands-on experience in training and customizing models, designing AI pipelines, and leveraging machine learning for practical applications. Driven by curiosity and innovation, I aim to create impactful AI-powered solutions while continuously expanding my expertise in multimodal AI, computer vision, and strategic data-driven projects.`
-}
 
-const EDUCATION = [
-  {
-    degree: 'Computer Science Engineering - Data Science Major',
-    institution: 'ESPRIT School of Engineering',
-    year: '2021 - Present',
-    description: 'Specializing in software engineering, advanced databases, ML & DL, and AI & LLMs'
-  }
-]
 
-const LANGUAGES = [
-  { name: 'Arabic', level: 'Native' },
-  { name: 'French', level: 'Intermediate' },
-  { name: 'English', level: 'Intermediate' }
-]
 
 export default function AboutPage() {
   return (

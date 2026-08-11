@@ -8,75 +8,14 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { Award, ExternalLink, Sparkles, Calendar, ChevronRight } from 'lucide-react'
+import {
+  ExternalLink,
+  Sparkles,
+  Calendar,
+  ChevronRight
+} from 'lucide-react'
+import { ACTIVITIES } from '@/data/portfolio'
 
-const ACTIVITIES: Array<{
-  title: string
-  org?: string
-  role?: string
-  date: string
-  image?: string
-  description?: string
-  link?: string
-  icon?: React.ReactNode
-}> = [
-  {
-    title: 'Computer Society Tunisian Annual Meeting 1.0',
-    org: 'Computer Society Tunisia',
-    role: 'Sponsoring Manager',
-    date: 'November 22-23, 2024',
-    image: '/activities/Cstam.jpg',
-    description: 'Served as Sponsoring Manager for the inaugural Computer Society Tunisian Annual Meeting, overseeing sponsorship partnerships and coordination for this major community event.'
-  },
-  {
-    title: 'ESPRIT RAS ROBOTS 3.0',
-    org: 'ESPRIT Robotics & Automation Society',
-    role: 'Treasurer',
-    date: 'May 1, 2025',
-    image: '/activities/err.jpg',
-    description: 'Managed financial operations and budgeting as Treasurer for ESPRIT RAS ROBOTS 3.0, a major robotic competition and event showcasing innovation in robotics and automation.'
-  },
-  {
-    title: 'IEEE Robotics and Automation Society Chapter',
-    org: 'IEEE RAS ESPRIT SB',
-    role: 'Vice Chair',
-    date: '2024-2025',
-    image: '/activities/ras3.jpg',
-    description: 'As Vice Chair of the IEEE Robotics and Automation Society Chapter, I supported coordination of chapter activities, led strategic planning, and organized technical workshops and competitions. I collaborated with the chair and executive team to engage members, foster collaboration, and ensure smooth execution of events promoting robotics education and innovation.'
-  },
-  {
-    title: 'International Conference on Robotics and Automation (ICRA)',
-    org: 'IEEE ICRA',
-    role: 'IDEAS Award Travel Grant Recipient',
-    date: 'May 19-23, 2025',
-    image: '/activities/icra.jpg',
-    description: 'Selected as one of 6 recipients of the IDEAS award travel grant to participate in ICRA 2025 in Atlanta, Georgia. Engaged with the international robotics and automation community, presented research, and networked with leading experts in the field.'
-  },
-  {
-    title: 'ESPRIT RAS ROBOTS 1.0',
-    org: 'ESPRIT Robotics & Automation Society',
-    role: 'Organizing Committee Member',
-    date: 'March 2023',
-    image: '/activities/rasrobots1.0.jpg',
-    description: 'Served as an Organizing Committee member for the inaugural edition of ESPRIT RAS ROBOTS 1.0, helping launch this pioneering robotics competition and establishing the foundation for future editions of the event.'
-  },
-  {
-    title: 'ESPRIT RAS ROBOTS 2.0',
-    org: 'ESPRIT Robotics & Automation Society',
-    role: 'Organizing Committee Member',
-    date: 'February 2024',
-    image: '/activities/rasrobots2.0.jpg',
-    description: 'Continued as an Organizing Committee member for the second edition of ESPRIT RAS ROBOTS, overseeing logistics, participant coordination, and ensuring a successful event that further established the competition as a premier robotics showcase.'
-  },
-  {
-    title: 'IAS Tunisian Annual Meeting 3.0',
-    org: 'IEEE Industry Applications Society Tunisia',
-    role: 'Tech Challenge Winner',
-    date: 'October 2022',
-    image: '/activities/IASTAM3.0.jpg',
-    description: 'Participated in the IAS Tunisian Annual Meeting 3.0 and won 1st place in the tech challenge, demonstrating excellence in technical problem-solving and innovation.'
-  }
-]
 
 export default function ActivitiesPage() {
   return (

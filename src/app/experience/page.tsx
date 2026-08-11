@@ -13,59 +13,10 @@ import {
   MapPin,
   Award,
   ChevronRight,
-  ExternalLink,
-  BarChart3
+  ExternalLink
 } from 'lucide-react'
-import { HiScale } from 'react-icons/hi'
+import { INTERNSHIPS } from '@/data/portfolio'
 
-const INTERNSHIPS = [
-  {
-    title: 'Data Analytics Intern',
-    company: 'Tunisie Telecom',
-    location: 'Tunis, Tunisia',
-    period: 'Jul 2025 - Sep 2025',
-    duration: '3 months',
-    description: 'Optimized ETL pipelines for SOS credit transactions, reducing processing time significantly. Developed interactive Power BI dashboards that accelerated operational decision-making across multiple departments.',
-    achievements: [
-      'Built churn prediction models with 87% accuracy, supporting retention of high-risk clients',
-      'Optimized ETL pipelines for SOS credit transactions, reducing processing time',
-      'Developed interactive Power BI dashboards that accelerated operational decision-making'
-    ],
-    technologies: ['ETL', 'Power BI', 'Machine Learning', 'Python', 'SQL'],
-    icon: <BarChart3 className="w-8 h-8 text-accent" />
-  },
-  {
-    title: 'AI Intern',
-    company: 'Première Consulting',
-    location: 'Tunis, Tunisia',
-    period: 'Jul 2025 - Aug 2025',
-    duration: '2 months',
-    description: 'Designed and deployed a multilingual legal chatbot system that enhanced query resolution efficiency. Applied advanced NLP techniques to improve legal query matching accuracy with dynamic database retrieval.',
-    achievements: [
-      'Designed and deployed a multilingual legal chatbot enhancing query resolution efficiency',
-      'Applied NLP techniques to improve legal query matching accuracy',
-      'Integrated dynamic database retrieval to ensure up-to-date and accurate responses'
-    ],
-    technologies: ['NLP', 'Python', 'RAG', 'Chatbot', 'Flask'],
-    link: 'https://github.com/AzizBS26/Chatbot-Juridique-Multilingue',
-    icon: <HiScale className="w-8 h-8 text-accent" />
-  },
-  {
-    title: 'Data Analytics Intern',
-    company: 'Attijari Bank',
-    location: 'Tunis, Tunisia',
-    period: 'Jun 2024 - Aug 2024',
-    duration: '3 months',
-    description: 'Built robust ETL pipelines using Talend, improving overall data quality and reducing errors across the organization. Created comprehensive dashboards and reports in Power BI for trend analysis and business insights.',
-    achievements: [
-      'Built ETL pipelines using Talend, improving data quality and reducing errors',
-      'Created dashboards and reports in Power BI, enabling faster trend analysis',
-      'Collaborated with cross-functional teams to optimize workflows and deliver actionable insights'
-    ],
-    technologies: ['Talend', 'ETL', 'Power BI', 'SQL', 'Data Analysis'],
-    icon: <BarChart3 className="w-8 h-8 text-accent" />
-  }
-]
 
 export default function ExperiencePage() {
   return (

@@ -10,13 +10,8 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Separator } from '@/components/ui/separator'
 import { Mail, Github, Linkedin, Zap, ChevronRight, FileText, Download } from 'lucide-react'
+import { PERSONAL_INFO } from '@/data/portfolio'
 
-const PERSONAL_INFO = {
-  name: 'Mohamed Aziz Ben Slima',
-  email: 'mohammedaziz.benslima@esprit.tn',
-  github: 'https://github.com/AzizBS26',
-  linkedin: 'https://www.linkedin.com/in/mohamed-aziz-ben-slima'
-}
 
 export default function ContactPage() {
   const [emailForm, setEmailForm] = React.useState({ name: '', email: '', message: '' })

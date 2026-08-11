@@ -8,97 +8,14 @@ import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { 
-  Brain, 
-  Mic, 
-  Activity, 
-  BarChart3, 
-  Smartphone, 
-  Building2, 
-  PawPrint, 
-  GraduationCap, 
-  Briefcase, 
+import {
+  GraduationCap,
+  Briefcase,
   Sparkles,
-  ExternalLink,
-  Rocket
+  ExternalLink
 } from 'lucide-react'
-import { HiScale } from 'react-icons/hi'
+import { PROJECTS } from '@/data/portfolio'
 
-const PROJECTS = {
-  academic: [
-    {
-      title: 'Deep Learning Model Development and Evaluation',
-      description: 'Developed and trained deep learning models using Python and TensorFlow/PyTorch with data augmentation. Deployed models with integrated pipelines, providing actionable insights through visualizations.',
-      tech: ['Python', 'TensorFlow', 'PyTorch', 'Data Augmentation'],
-      link: 'https://github.com/AzizBS26/Local_AIAgent_NewsBotAI',
-      icon: <Brain className="w-10 h-10" />,
-      dates: 'Sep 2025 - Oct 2025'
-    },
-    {
-      title: 'Emotional Speech Data Generation with VAE and Diffusion Models',
-      description: 'Built a PyTorch pipeline to generate emotional speech using VAE and diffusion models. Validated synthetic data with a ResNet-50 classifier, achieving 98.3% accuracy on RAVDESS and EmoDB datasets.',
-      tech: ['PyTorch', 'VAE', 'Diffusion Models', 'ResNet-50'],
-      link: '#',
-      icon: <Mic className="w-10 h-10" />,
-      dates: 'May 2025'
-    },
-    {
-      title: 'Cancer Detection Using Deep Learning',
-      description: 'Developed a CNN for multi-class medical image classification with custom augmentation and optimization. Implemented training-validation pipelines to improve accuracy and generalization on real-world datasets.',
-      tech: ['CNN', 'Python', 'Medical Imaging', 'Deep Learning'],
-      link: '#',
-      icon: <Activity className="w-10 h-10" />,
-      dates: 'Feb 2025'
-    },
-    {
-      title: 'Customer Loyalty & Business Insights',
-      description: 'Analyzed customer behavior and built predictive models in Python to optimize loyalty programs. Developed a multimodal agent integrating dashboards, reports, and predictive insights for decision-making.',
-      tech: ['Python', 'Power BI', 'ML', 'Multimodal AI'],
-      link: 'https://github.com/AzizBS26/MarketMind-4DS3',
-      icon: <BarChart3 className="w-10 h-10" />,
-      dates: 'Nov 2024 - May 2025'
-    }
-  ],
-  internship: [
-    {
-      title: 'Data Analytics Intern - Tunisie Telecom',
-      description: 'Optimized ETL pipelines for SOS credit transactions, reducing processing time. Developed interactive Power BI dashboards that accelerated operational decision-making. Built churn prediction models with 87% accuracy.',
-      tech: ['ETL', 'Power BI', 'ML', 'Churn Prediction'],
-      link: '#',
-      icon: <BarChart3 className="w-10 h-10" />,
-      dates: 'Jul 2025 - Sep 2025',
-      company: 'Tunisie Telecom'
-    },
-    {
-      title: 'AI Intern - Première Consulting',
-      description: 'Designed and deployed a multilingual legal chatbot, enhancing query resolution efficiency. Applied NLP techniques to improve legal query matching accuracy with dynamic database retrieval.',
-      tech: ['NLP', 'Chatbot', 'Python', 'RAG'],
-      link: 'https://github.com/AzizBS26/Chatbot-Juridique-Multilingue',
-      icon: <HiScale className="w-10 h-10" />,
-      dates: 'Jul 2025 - Aug 2025',
-      company: 'Première Consulting'
-    },
-    {
-      title: 'Data Analytics Intern - Attijari Bank',
-      description: 'Built ETL pipelines using Talend, improving data quality and reducing errors. Created dashboards and reports in Power BI, enabling faster trend analysis and business insights.',
-      tech: ['Talend', 'ETL', 'Power BI', 'SQL'],
-      link: '#',
-      icon: <BarChart3 className="w-10 h-10" />,
-      dates: 'Jun 2024 - Aug 2024',
-      company: 'Attijari Bank'
-    }
-  ],
-  personal: [
-    {
-      title: 'Dog Breed Recommendation Chatbot',
-      description: 'Intelligent web-based chatbot system that recommends dog breeds based on user preferences using NLP and machine learning. Features 195+ dog breeds, cosine similarity matching with 7 personality traits, real dog images from GitHub, ChatGPT-style interface, and full-screen image viewer.',
-      tech: ['Python', 'Flask', 'NLP', 'Scikit-learn', 'pandas'],
-      link: 'https://github.com/AzizBS26/Dog-Breed-Recommendation-Chatbot',
-      icon: <PawPrint className="w-10 h-10" />,
-      dates: '2025'
-    }
-  ]
-}
 
 function ProjectCard({ project, index }: { project: any; index: number }) {
   return (

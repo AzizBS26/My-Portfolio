@@ -100,13 +100,14 @@ equivalent shared store if the endpoint needs actual protection.
 
 ## Editing the content
 
-Content lives in `const` objects at the top of each page component —
-`PERSONAL_INFO`, `SKILLS`, `PROJECTS`, `CERTIFICATIONS`, `ACTIVITIES`,
-`EDUCATION`, `LANGUAGES`.
+All content lives in **`src/data/portfolio.tsx`** — one exported object per
+section: `PERSONAL_INFO`, `SKILLS`, `PROFESSIONAL_EXPERIENCE`, `INTERNSHIPS`,
+`PROJECTS`, `EDUCATION`, `CERTIFICATIONS`, `LANGUAGES`, `ACTIVITIES`. Every page
+imports from there, so a change lands everywhere at once.
 
-Note that several of these are currently duplicated across `page.tsx` and the
-matching sub-page, and `cv-context.ts` restates them in prose for the AI.
-Changing one means changing the others — check every copy.
+One exception: `src/lib/cv-context.ts` restates this content in prose for the AI
+assistant and is maintained separately. Update it when you add something the
+assistant should know about.
 
 Images go in `public/`: profile photo at `public/profile.jpg`, certification
 images in `public/certifications/`, activity images in `public/activities/`.
