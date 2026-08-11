@@ -243,7 +243,7 @@ const Navbar = () => {
                   variant="outline"
                   size="sm"
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-                  className="flex-1 rounded-lg hover:bg-primary/10"
+                  className="flex-1 h-11 rounded-lg hover:bg-primary/10"
                 >
                   {mounted ? (
                     theme === 'dark' ? (
@@ -257,7 +257,7 @@ const Navbar = () => {
                 </Button>
                 <Button
                   asChild
-                  className="flex-1 gap-2 bg-gradient-to-r from-primary to-accent text-white"
+                  className="flex-1 h-11 gap-2 bg-gradient-to-r from-primary to-accent text-white"
                   size="sm"
                 >
                   <Link href="/#contact" onClick={() => setIsOpen(false)}>

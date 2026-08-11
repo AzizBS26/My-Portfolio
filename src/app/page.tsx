@@ -237,7 +237,10 @@ export default function PortfolioPage() {
 
             {/* Right side - Profile photo */}
             <div className="flex justify-center lg:justify-end animate-fade-in-up stagger-2">
-              <div className="relative w-88 h-88 md:w-[420px] md:h-[420px]">
+              {/* Fluid, not a fixed w-88: at 352px it was wider than a 320px
+                  screen and, sharing the grid track with the text column, it
+                  pushed the heading off-screen. */}
+              <div className="relative w-full max-w-[420px] aspect-square">
                 {/* Gradient ring around photo */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-accent to-primary opacity-20 blur-xl animate-pulse-glow"></div>
                 
@@ -621,9 +624,9 @@ export default function PortfolioPage() {
                   <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-medium">Email</p>
-                    <p className="text-sm text-muted-foreground">{PERSONAL_INFO.email}</p>
+                    <p className="text-sm text-muted-foreground break-all">{PERSONAL_INFO.email}</p>
                   </div>
                 </a>
 

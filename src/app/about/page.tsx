@@ -61,7 +61,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             {/* Left side - Profile photo */}
             <div className="flex justify-center lg:justify-start animate-fade-in-up">
-              <div className="relative w-88 h-88 md:w-[380px] md:h-[380px]">
+              <div className="relative w-full max-w-[380px] aspect-square">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-accent to-primary opacity-20 blur-xl animate-pulse-glow"></div>
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-accent/30 shadow-2xl">
                   <Image

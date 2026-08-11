@@ -391,6 +391,8 @@ export function ChatAssistant() {
               </div>
             )}
             <form onSubmit={handleSubmit} className="flex gap-2">
+              {/* text-base on mobile: iOS Safari zooms the page whenever a
+                  focused input is under 16px, and never zooms back out. */}
               <Input
                 ref={inputRef}
                 value={input}
@@ -398,7 +400,7 @@ export function ChatAssistant() {
                 placeholder="Ask me anything..."
                 disabled={isLoading}
                 aria-label="Your message"
-                className="flex-1 border-accent/20 focus:border-accent text-xs md:text-sm py-2 h-9"
+                className="flex-1 border-accent/20 focus:border-accent text-base md:text-sm py-2 h-9"
                 maxLength={200}
               />
               <Button

@@ -73,9 +73,9 @@ export default function ContactPage() {
                   <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-medium">Email</p>
-                    <p className="text-sm text-muted-foreground">{PERSONAL_INFO.email}</p>
+                    <p className="text-sm text-muted-foreground break-all">{PERSONAL_INFO.email}</p>
                   </div>
                 </a>
 
