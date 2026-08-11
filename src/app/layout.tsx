@@ -47,6 +47,11 @@ export const metadata: Metadata = {
   icons: {
     icon: '/logo-AB.svg',
   },
+  // Google Search Console ownership proof. Public by design — it only asserts
+  // control of the domain, it grants nothing.
+  verification: {
+    google: 'nFYrGCjplPNLrHgZK_Ro8DADeU0iyrIktib00k-uThc',
+  },
   robots: {
     index: true,
     follow: true,
