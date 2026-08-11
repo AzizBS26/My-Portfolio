@@ -17,6 +17,19 @@ import {
 import { Button } from '@/components/ui/button'
 import { PERSONAL_INFO, EDUCATION, LANGUAGES } from '@/data/portfolio'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Data Science student at ESPRIT, Tunisia. Background, education and languages of Mohamed Aziz Ben Slima, focused on AI, LLMs and machine learning.',
+  alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About | Mohamed Aziz Ben Slima',
+    description: 'Data Science student at ESPRIT, Tunisia. Background, education and languages of Mohamed Aziz Ben Slima, focused on AI, LLMs and machine learning.',
+    url: '/about',
+  },
+}
+
 
 
 

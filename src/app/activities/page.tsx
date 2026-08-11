@@ -14,6 +14,19 @@ import {
 } from 'lucide-react'
 import { ACTIVITIES } from '@/data/portfolio'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Activities',
+  description: 'Events, competitions and community involvement of Mohamed Aziz Ben Slima, including IEEE ICRA, IASTAM and robotics competitions.',
+  alternates: { canonical: '/activities' },
+  openGraph: {
+    title: 'Activities | Mohamed Aziz Ben Slima',
+    description: 'Events, competitions and community involvement of Mohamed Aziz Ben Slima, including IEEE ICRA, IASTAM and robotics competitions.',
+    url: '/activities',
+  },
+}
+
 
 export default function ActivitiesPage() {
   return (

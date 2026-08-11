@@ -15,6 +15,19 @@ import {
 } from 'lucide-react'
 import { INTERNSHIPS } from '@/data/portfolio'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Experience',
+  description: 'Internships of Mohamed Aziz Ben Slima in data analytics and AI at Tunisie Telecom, Première Consulting and Attijari Bank.',
+  alternates: { canonical: '/experience' },
+  openGraph: {
+    title: 'Experience | Mohamed Aziz Ben Slima',
+    description: 'Internships of Mohamed Aziz Ben Slima in data analytics and AI at Tunisie Telecom, Première Consulting and Attijari Bank.',
+    url: '/experience',
+  },
+}
+
 
 export default function ExperiencePage() {
   return (

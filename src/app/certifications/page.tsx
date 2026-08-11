@@ -13,6 +13,19 @@ import {
 } from 'lucide-react'
 import { CERTIFICATIONS } from '@/data/portfolio'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Certifications',
+  description: 'Professional certifications of Mohamed Aziz Ben Slima from DataCamp, Cisco, IEEE, 365 Data Science and more, in AI, data science and cloud.',
+  alternates: { canonical: '/certifications' },
+  openGraph: {
+    title: 'Certifications | Mohamed Aziz Ben Slima',
+    description: 'Professional certifications of Mohamed Aziz Ben Slima from DataCamp, Cisco, IEEE, 365 Data Science and more, in AI, data science and cloud.',
+    url: '/certifications',
+  },
+}
+
 
 export default function CertificationsPage() {
   return (

@@ -4,6 +4,8 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ChatAssistant } from "@/components/chat-assistant";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { PERSONAL_INFO } from "@/data/portfolio";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -24,18 +26,51 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const DESCRIPTION =
+  "Data Science student specializing in AI, LLMs, and Machine Learning. Building intelligent solutions with deep learning and NLP.";
+
 export const metadata: Metadata = {
-  title: "Mohamed Aziz Ben Slima - Data Science & AI Portfolio",
-  description: "Data Science student specializing in AI, LLMs, and Machine Learning. Building intelligent solutions with deep learning and NLP.",
+  // Required for Open Graph and canonical URLs to resolve to absolute paths.
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Mohamed Aziz Ben Slima - Data Science & AI Portfolio",
+    // Sub-pages set only their own title; this appends the site name.
+    template: "%s | Mohamed Aziz Ben Slima",
+  },
+  description: DESCRIPTION,
   keywords: ["Data Science", "AI", "Machine Learning", "LLM", "Deep Learning", "NLP", "Computer Vision", "Portfolio"],
-  authors: [{ name: "Mohamed Aziz Ben Slima" }],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: '/logo-AB.svg',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Mohamed Aziz Ben Slima - Data Science & AI Portfolio",
-    description: "Data Science student specializing in AI, LLMs, and Machine Learning",
+    description: DESCRIPTION,
+    url: "/",
+    siteName: SITE_NAME,
+    locale: "en_US",
     type: "website",
+    images: [{ url: "/profile.jpg", width: 1200, height: 1200, alt: SITE_NAME }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mohamed Aziz Ben Slima - Data Science & AI Portfolio",
+    description: DESCRIPTION,
+    images: ["/profile.jpg"],
   },
 };
 
@@ -62,6 +97,24 @@ export default function RootLayout({
                 document.documentElement.setAttribute('data-reveal-ready', '');
               } catch (e) {}
             })();`,
+          }}
+        />
+        {/* Person schema: lets Google tie the site to you as an entity rather
+            than treating it as an anonymous page. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: PERSONAL_INFO.name,
+              url: SITE_URL,
+              image: `${SITE_URL}/profile.jpg`,
+              email: PERSONAL_INFO.email,
+              jobTitle: PERSONAL_INFO.title,
+              description: PERSONAL_INFO.bio,
+              sameAs: [PERSONAL_INFO.github, PERSONAL_INFO.linkedin],
+            }),
           }}
         />
         {children}

@@ -14,6 +14,19 @@ import {
 } from 'lucide-react'
 import { PROJECTS } from '@/data/portfolio'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'Academic, internship and personal projects of Mohamed Aziz Ben Slima in machine learning, NLP, computer vision and web development.',
+  alternates: { canonical: '/projects' },
+  openGraph: {
+    title: 'Projects | Mohamed Aziz Ben Slima',
+    description: 'Academic, internship and personal projects of Mohamed Aziz Ben Slima in machine learning, NLP, computer vision and web development.',
+    url: '/projects',
+  },
+}
+
 
 function ProjectCard({ project, index }: { project: any; index: number }) {
   return (

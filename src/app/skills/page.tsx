@@ -9,6 +9,19 @@ import {
 } from 'lucide-react'
 import { SKILLS } from '@/data/portfolio'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Skills',
+  description: 'Technical skills of Mohamed Aziz Ben Slima: Python, TensorFlow, PyTorch, NLP, RAG, SQL, React, Next.js, Docker and AWS.',
+  alternates: { canonical: '/skills' },
+  openGraph: {
+    title: 'Skills | Mohamed Aziz Ben Slima',
+    description: 'Technical skills of Mohamed Aziz Ben Slima: Python, TensorFlow, PyTorch, NLP, RAG, SQL, React, Next.js, Docker and AWS.',
+    url: '/skills',
+  },
+}
+
 
 function SkillBadge({ name, icon }: { name: string; icon: React.ReactNode }) {
   return (
