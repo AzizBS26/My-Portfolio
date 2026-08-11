@@ -79,20 +79,20 @@ export default function ExperiencePage() {
         </div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="mb-8 opacity-0 animate-fade-in-up">
+          <div className="mb-8 animate-fade-in-up">
             <Link href="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-6">
               <ChevronRight className="h-4 w-4 rotate-180" />
               Back to Portfolio
             </Link>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 opacity-0 animate-fade-in-up stagger-1">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up stagger-1">
             <span className="bg-gradient-to-r from-primary via-primary to-accent/80 dark:from-foreground dark:via-accent dark:to-foreground bg-clip-text text-transparent">
               Professional Experience
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-8 opacity-0 animate-fade-in-up stagger-2 leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-8 animate-fade-in-up stagger-2 leading-relaxed">
             A comprehensive timeline of my internships and professional growth across leading organizations in Tunisia.
           </p>
         </div>
@@ -107,7 +107,7 @@ export default function ExperiencePage() {
             {INTERNSHIPS.map((internship, index) => (
               <div
                 key={internship.company}
-                className="opacity-0 animate-fade-in-up"
+                className="animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <Card className="card-hover">

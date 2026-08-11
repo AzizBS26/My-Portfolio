@@ -65,7 +65,7 @@ export default function ContactPage() {
         <div className="container mx-auto max-w-4xl">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Info */}
-            <Card className="card-hover opacity-0 animate-fade-in-up">
+            <Card className="card-hover animate-fade-in-up">
               <CardHeader>
                 <CardTitle>Contact Information</CardTitle>
                 <CardDescription>Reach out through any of these channels</CardDescription>
@@ -141,7 +141,7 @@ export default function ContactPage() {
             </Card>
 
             {/* Contact Form */}
-            <Card className="card-hover opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <Card className="card-hover animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <CardHeader>
                 <CardTitle>Send a Quick Message</CardTitle>
                 <CardDescription>I'll get back to you as soon as possible</CardDescription>

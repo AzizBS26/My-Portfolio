@@ -49,20 +49,20 @@ export default function AboutPage() {
         </div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="mb-8 opacity-0 animate-fade-in-up">
+          <div className="mb-8 animate-fade-in-up">
             <Link href="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-6">
               <ChevronRight className="h-4 w-4 rotate-180" />
               Back to Portfolio
             </Link>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 opacity-0 animate-fade-in-up stagger-1">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up stagger-1">
             <span className="bg-gradient-to-r from-primary via-primary to-accent/80 dark:from-foreground dark:via-accent dark:to-foreground bg-clip-text text-transparent">
               About Me
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-8 opacity-0 animate-fade-in-up stagger-2 leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-8 animate-fade-in-up stagger-2 leading-relaxed">
             Learn more about my journey, expertise, and passion for Data Science and AI
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             {/* Left side - Profile photo */}
-            <div className="flex justify-center lg:justify-start opacity-0 animate-fade-in-up">
+            <div className="flex justify-center lg:justify-start animate-fade-in-up">
               <div className="relative w-88 h-88 md:w-[380px] md:h-[380px]">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-accent to-primary opacity-20 blur-xl animate-pulse-glow"></div>
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-accent/30 shadow-2xl">
@@ -91,7 +91,7 @@ export default function AboutPage() {
             </div>
 
             {/* Right side - Bio */}
-            <div className="space-y-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <h2 className="text-3xl font-bold mb-4">{PERSONAL_INFO.name}</h2>
               <p className="text-xl text-primary font-semibold">{PERSONAL_INFO.tagline}</p>
               <p className="text-base text-muted-foreground leading-relaxed">
@@ -131,7 +131,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Education */}
-            <Card className="card-hover border-accent/20 opacity-0 animate-fade-in-up">
+            <Card className="card-hover border-accent/20 animate-fade-in-up">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-2xl">
                   <GraduationCap className="h-6 w-6 text-primary" />
@@ -155,7 +155,7 @@ export default function AboutPage() {
             </Card>
 
             {/* Languages */}
-            <Card className="card-hover opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <Card className="card-hover animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                   <Zap className="h-5 w-5 text-primary" />
@@ -188,7 +188,7 @@ export default function AboutPage() {
 
           {/* Key Points */}
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="card-hover opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <Card className="card-hover animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Brain className="h-5 w-5 text-accent" />
@@ -203,7 +203,7 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="card-hover opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+            <Card className="card-hover animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Zap className="h-5 w-5 text-accent" />
@@ -218,7 +218,7 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="card-hover opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <Card className="card-hover animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <GraduationCap className="h-5 w-5 text-accent" />

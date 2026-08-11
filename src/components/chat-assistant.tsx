@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -38,6 +39,9 @@ export function ChatAssistant() {
   const [isLoading, setIsLoading] = React.useState(false)
   const [error, setError] = React.useState<string | null>(null)
   const messagesEndRef = React.useRef<HTMLDivElement>(null)
+  const inputRef = React.useRef<HTMLInputElement>(null)
+  const bubbleRef = React.useRef<HTMLButtonElement>(null)
+  const wasOpenRef = React.useRef(false)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -174,14 +178,31 @@ export function ChatAssistant() {
     }
   }
 
+  // Close on Escape, move focus into the panel on open and back to the bubble on close
+  React.useEffect(() => {
+    if (!isOpen) {
+      // Only restore focus if the panel was actually opened before
+      if (wasOpenRef.current) bubbleRef.current?.focus()
+      return
+    }
+    wasOpenRef.current = true
+    inputRef.current?.focus()
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false)
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [isOpen])
+
   return (
     <>
       {/* Floating Chat Bubble */}
       {!isOpen && (
         <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
           <Button
+            ref={bubbleRef}
             onClick={toggleChat}
-            className="h-12 w-12 md:h-14 md:w-14 rounded-full shadow-2xl shadow-accent/50 hover:shadow-accent/70 hover:scale-110 transition-all duration-300 group p-0 overflow-hidden"
+            className="h-12 w-12 md:h-14 md:w-14 rounded-full shadow-2xl shadow-accent/50 hover:shadow-accent/70 hover:scale-105 transition-[transform,box-shadow] duration-200 group p-0 overflow-hidden"
             size="icon"
             aria-label="Open chat assistant"
           >
@@ -199,7 +220,12 @@ export function ChatAssistant() {
 
       {/* Chat Window - Optimized & Space Efficient */}
       {isOpen && (
-        <Card className="fixed inset-4 md:bottom-6 md:right-6 md:left-auto md:top-auto md:w-[500px] md:h-[700px] shadow-2xl z-50 flex flex-col animate-in slide-in-from-bottom-5 fade-in duration-300 border-accent/30">
+        <Card
+          role="dialog"
+          aria-modal="true"
+          aria-label="Portfolio assistant"
+          className="fixed inset-4 md:bottom-6 md:right-6 md:left-auto md:top-auto md:w-[500px] md:h-[700px] shadow-2xl z-50 flex flex-col animate-in slide-in-from-bottom-5 fade-in duration-300 border-accent/30"
+        >
           {/* Header - Modern & Enhanced */}
           <CardHeader className="relative border-b bg-white/5 dark:bg-white/5 backdrop-blur-md px-3 py-1 flex-shrink-0 overflow-hidden">
             {/* Gradient accent border at bottom */}
@@ -227,6 +253,7 @@ export function ChatAssistant() {
                 variant="ghost"
                 size="icon"
                 onClick={toggleChat}
+                aria-label="Close chat assistant"
                 className="h-7 w-7 hover:bg-gray-300 dark:hover:bg-white/10 flex-shrink-0 p-0 transition-all">
                 <X className="h-3.5 w-3.5" />
               </Button>
@@ -234,7 +261,13 @@ export function ChatAssistant() {
           </CardHeader>
 
           {/* Messages Container - Optimized for Maximum Content Space */}
-          <CardContent className="flex-1 overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4">
+          <CardContent
+            role="log"
+            aria-live="polite"
+            aria-relevant="additions text"
+            aria-label="Conversation"
+            className="flex-1 overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4"
+          >
             {/* Welcome Message */}
             {messages.length === 0 && (
               <div className="space-y-3">
@@ -272,9 +305,9 @@ export function ChatAssistant() {
                     </a>
                   </Badge>
                   <Badge variant="outline" className="text-[9px] md:text-[10px] cursor-pointer hover:bg-accent/10 px-2 py-0.5" asChild>
-                    <a href="/contact">
+                    <Link href="/contact">
                       Contact Aziz
-                    </a>
+                    </Link>
                   </Badge>
                 </div>
               </div>
@@ -333,7 +366,10 @@ export function ChatAssistant() {
 
             {/* Error Message - Compact */}
             {error && (
-              <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-2.5 md:p-3 text-xs md:text-sm text-red-600 dark:text-red-400">
+              <div
+                role="alert"
+                className="bg-red-500/10 border border-red-500/30 rounded-lg p-2.5 md:p-3 text-xs md:text-sm text-red-600 dark:text-red-400"
+              >
                 {error}
               </div>
             )}
@@ -372,10 +408,12 @@ export function ChatAssistant() {
             )}
             <form onSubmit={handleSubmit} className="flex gap-2">
               <Input
+                ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask me anything..."
                 disabled={isLoading}
+                aria-label="Your message"
                 className="flex-1 border-accent/20 focus:border-accent text-xs md:text-sm py-2 h-9"
                 maxLength={200}
               />

@@ -102,7 +102,7 @@ const PROJECTS = {
 
 function ProjectCard({ project, index }: { project: any; index: number }) {
   return (
-    <Card className="card-hover project-card-lift opacity-0 animate-fade-in-up h-full flex flex-col group" style={{ animationDelay: `${index * 0.05}s` }}>
+    <Card className="card-hover project-card-lift animate-fade-in-up h-full flex flex-col group" style={{ animationDelay: `${index * 0.05}s` }}>
       <CardHeader>
         <div className="mb-4 p-4 bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20 rounded-2xl w-fit animate-float transition-all group-hover:scale-110 group-hover:border-accent/50 group-hover:shadow-lg group-hover:shadow-accent/20" style={{ animationDelay: `${index * 0.2}s` }}>
           <div className="text-accent">

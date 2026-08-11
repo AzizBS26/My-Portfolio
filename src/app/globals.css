@@ -67,16 +67,16 @@
   --muted: #F5F5F5;
   --muted-foreground: #6B7280;
 
-  /* Accent: Electric Cyan */
-  --accent: #00FFFF;
-  --accent-foreground: #1E2A38;
+  /* Accent: Deep Cyan — readable on light surfaces (5.1:1 on --background) */
+  --accent: #0E7490;
+  --accent-foreground: #FFFFFF;
 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0 0);
 
   --border: oklch(0.90 0 0);
   --input: oklch(0.90 0 0);
-  --ring: oklch(0.55 0.18 180);
+  --ring: #0E7490;
 
   /* Chart colors - data visualization palette */
   --chart-1: oklch(0.55 0.18 180);
@@ -168,24 +168,15 @@
     font-family: var(--font-jetbrains-mono), 'Courier New', monospace;
   }
 
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
+  /* Smooth scrolling — opt out when the user asked for reduced motion */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 }
 
 /* Custom animations */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -204,15 +195,6 @@
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
 /* Grid pattern for data viz aesthetic */
 .data-grid-pattern {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
@@ -226,8 +208,20 @@
 }
 
 /* Utility classes */
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
+
+/* Scroll-triggered reveal.
+   The hidden state is scoped to [data-reveal-ready], which the inline script in
+   the root layout sets before first paint. Without JavaScript the attribute is
+   never added, so content renders normally instead of being stuck invisible. */
+[data-reveal-ready] .animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+[data-reveal-ready] .animate-fade-in-up[data-revealed='true'] {
+  opacity: 1;
+  transform: none;
 }
 
 .animate-float {
@@ -238,20 +232,10 @@
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Staggered animation delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, oklch(0.55 0.18 180), oklch(0.65 0.20 25));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* Staggered reveal delays */
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
 
 /* ============= Modern AI/ML Theme Enhancements ============= */
 
@@ -259,27 +243,29 @@
 .btn-glow {
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .btn-glow:hover {
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
 .dark .btn-glow:hover {
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.7);
+  box-shadow: 0 0 25px color-mix(in srgb, var(--accent) 65%, transparent);
 }
 
 /* Card hover effects with subtle gradient border */
 .card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .card-hover:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   box-shadow: 0 20px 50px -12px rgba(30, 42, 56, 0.25);
-  border-color: rgba(0, 255, 255, 0.3);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
 .dark .card-hover {
@@ -287,81 +273,25 @@
 }
 
 .dark .card-hover:hover {
-  box-shadow: 0 20px 60px -12px rgba(0, 255, 255, 0.4);
-  border-color: rgba(0, 255, 255, 0.5);
-}
-
-/* Subtle text enhancement (removed neon pulse for professional look) */
-.gradient-name {
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-/* Circular progress bars */
-.circular-progress {
-  position: relative;
-  width: 120px;
-  height: 120px;
+  box-shadow: 0 20px 60px -12px color-mix(in srgb, var(--accent) 40%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
 }
 
 /* Skill bar with gradient */
 .skill-bar-gradient {
-  background: linear-gradient(90deg, #1E2A38 0%, #00FFFF 100%);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
   border-radius: 999px;
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.dark .skill-bar-gradient {
-  background: linear-gradient(90deg, #00FFFF 0%, #8A6FFF 100%);
-}
-
-/* Futuristic grid background */
-.tech-grid-bg {
-  background-image:
-    linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-
-/* Hover lift effect for project cards */
+/* Hover lift effect for project cards.
+   Kept to a translation: scaling a card resamples its text and makes it blur. */
 .project-card-lift {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-card-lift:hover {
-  transform: scale(1.05) translateY(-10px);
-}
-
-/* Custom scrollbar with cyan accent */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #00FFFF;
-  border-radius: 10px;
-}
-
-.dark .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #8A6FFF;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #00CCCC;
-}
-
-.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #A88FFF;
+  transform: translateY(-6px);
 }
 
 /* Respect reduced motion */

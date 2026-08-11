@@ -3,6 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { 
   Code,
@@ -34,6 +35,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false)
   const [theme, setTheme] = React.useState<'light' | 'dark'>('dark')
   const [mounted, setMounted] = React.useState(false)
+  const pathname = usePathname()
+  const menuButtonRef = React.useRef<HTMLButtonElement>(null)
 
   // Initialize theme on client to avoid SSR mismatch
   React.useEffect(() => {
@@ -47,6 +50,19 @@ const Navbar = () => {
     root.classList.toggle('dark', theme === 'dark')
     localStorage.setItem('theme', theme)
   }, [theme])
+
+  // Close the mobile menu on Escape, and restore focus to the trigger
+  React.useEffect(() => {
+    if (!isOpen) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [isOpen])
 
   const navLinks = [
     { label: 'About', href: '/about', icon: <User className="w-4 h-4" /> },
@@ -93,21 +109,31 @@ const Navbar = () => {
 
             {/* Center Links */}
             <div className="flex items-center gap-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="relative px-5 py-2.5 text-sm font-semibold text-muted-foreground hover:text-accent transition-all group rounded-lg"
-                >
-                  {/* Animated background */}
-                  <span className="absolute inset-0 bg-gradient-to-r from-accent/10 to-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  {/* Content */}
-                  <span className="relative flex items-center gap-2">
-                    {link.label}
-                    <span className="group-hover:scale-125 transition-transform duration-300">{link.icon}</span>
-                  </span>
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`relative px-5 py-2.5 text-sm font-semibold rounded-lg transition-colors group outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                      isActive ? 'text-accent' : 'text-muted-foreground hover:text-accent'
+                    }`}
+                  >
+                    {/* Hover background */}
+                    <span className="absolute inset-0 bg-gradient-to-r from-accent/10 to-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    {/* Content */}
+                    <span className="relative flex items-center gap-2">
+                      {link.label}
+                      <span className="transition-transform duration-200 group-hover:scale-110">{link.icon}</span>
+                    </span>
+                    {/* Active underline */}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-1/2 h-0.5 w-8 -translate-x-1/2 rounded-full bg-accent" />
+                    )}
+                  </Link>
+                )
+              })}
             </div>
 
             {/* Right Side - CTA Button & Theme Toggle */}
@@ -134,12 +160,12 @@ const Navbar = () => {
               <Button
                 asChild
                 size="sm"
-                className="relative gap-2 px-6 bg-gradient-to-r from-accent to-primary hover:shadow-2xl hover:shadow-accent/50 transition-all duration-300 btn-glow hover:scale-105 font-semibold"
+                className="relative gap-2 px-6 bg-gradient-to-r from-accent to-primary text-white transition-[transform,box-shadow] duration-200 btn-glow hover:scale-[1.03] font-semibold"
               >
-                <a href="/#contact">
+                <Link href="/#contact">
                   <Zap className="h-4 w-4" />
                   Let's Talk
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
@@ -171,10 +197,14 @@ const Navbar = () => {
 
           {/* Menu Button */}
           <Button
+            ref={menuButtonRef}
             variant="ghost"
             size="icon"
             onClick={() => setIsOpen(!isOpen)}
             className="hover:bg-primary/10"
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-nav-menu"
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -182,21 +212,32 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-primary/10 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div
+            id="mobile-nav-menu"
+            className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-primary/10 animate-in fade-in slide-in-from-top-2 duration-200"
+          >
             <div className="p-4 space-y-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="block px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-primary/10 rounded-lg transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span className="flex items-center gap-2">
-                    {link.icon}
-                    {link.label}
-                  </span>
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                      isActive
+                        ? 'text-accent bg-accent/10'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-primary/10'
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span className="flex items-center gap-2">
+                      {link.icon}
+                      {link.label}
+                    </span>
+                  </Link>
+                )
+              })}
               <div className="flex gap-2 pt-2 border-t border-primary/10 mt-2">
                 <Button
                   variant="outline"
@@ -216,13 +257,13 @@ const Navbar = () => {
                 </Button>
                 <Button
                   asChild
-                  className="flex-1 gap-2 bg-gradient-to-r from-primary to-accent"
+                  className="flex-1 gap-2 bg-gradient-to-r from-primary to-accent text-white"
                   size="sm"
                 >
-                  <a href="/#contact">
+                  <Link href="/#contact" onClick={() => setIsOpen(false)}>
                     <Zap className="h-4 w-4" />
                     Let's Talk
-                  </a>
+                  </Link>
                 </Button>
               </div>
             </div>

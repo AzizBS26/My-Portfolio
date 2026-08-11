@@ -3,6 +3,7 @@ import { Poppins, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ChatAssistant } from "@/components/chat-assistant";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -57,11 +58,14 @@ export default function RootLayout({
                 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 const theme = stored === 'light' || stored === 'dark' ? stored : (prefersDark ? 'dark' : 'light');
                 document.documentElement.classList.toggle('dark', theme === 'dark');
+                // Enables the scroll-reveal hidden state only when JS is running
+                document.documentElement.setAttribute('data-reveal-ready', '');
               } catch (e) {}
             })();`,
           }}
         />
         {children}
+        <ScrollReveal />
         <Toaster />
         <ChatAssistant />
       </body>

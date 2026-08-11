@@ -186,7 +186,7 @@ export default function CertificationsPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {CERTIFICATIONS.map((cert, index) => (
-              <Card key={cert.name} className="card-hover opacity-0 animate-fade-in-up overflow-hidden h-full flex flex-col group" style={{ animationDelay: `${index * 0.05}s` }}>
+              <Card key={cert.name} className="card-hover animate-fade-in-up overflow-hidden h-full flex flex-col group" style={{ animationDelay: `${index * 0.05}s` }}>
                 {cert.image && (
                   <div className="relative h-48 w-full bg-secondary overflow-hidden">
                     <Image

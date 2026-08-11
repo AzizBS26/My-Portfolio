@@ -398,7 +398,7 @@ const CERTIFICATIONS: Array<{ name: string; issuer: string; date: string; image?
     name: 'IEEE Mandate',
     issuer: 'IEEE',
     date: '2024',
-    image: '/certifications/IEEE mondat.jpg',
+    image: '/certifications/IEEE MONDAT.jpg',
     icon: <img src="/icons/ieee-icon.svg" alt="IDEA" className="w-6 h-6 opacity-90" />
   },
   {
@@ -553,7 +553,7 @@ function SkillBadge({ name, icon }: { name: string; icon: React.ReactNode }) {
 
 function ProjectCard({ project, index }: { project: any; index: number }) {
   return (
-    <Card className="card-hover project-card-lift opacity-0 animate-fade-in-up h-full flex flex-col group" style={{ animationDelay: `${index * 0.1}s` }}>
+    <Card className="card-hover project-card-lift animate-fade-in-up h-full flex flex-col group" style={{ animationDelay: `${index * 0.1}s` }}>
       <CardHeader>
         <div className="mb-4 p-4 bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20 rounded-2xl w-fit animate-float transition-all group-hover:scale-110 group-hover:border-accent/50 group-hover:shadow-lg group-hover:shadow-accent/20" style={{ animationDelay: `${index * 0.2}s` }}>
           <div className="text-accent">
@@ -639,17 +639,18 @@ export default function PortfolioPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Text content */}
             <div className="space-y-8">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold opacity-0 animate-fade-in-up leading-tight">
+              {/* No reveal on the LCP heading: it must paint without waiting for JS */}
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
                 <span className="bg-gradient-to-r from-primary via-primary to-accent/80 dark:from-foreground dark:via-accent dark:to-foreground bg-clip-text text-transparent">
                   {PERSONAL_INFO.name}
                 </span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl opacity-0 animate-fade-in-up stagger-1 leading-relaxed">
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl animate-fade-in-up stagger-1 leading-relaxed">
                 {PERSONAL_INFO.tagline}
               </p>
 
-              <div className="flex flex-wrap gap-4 opacity-0 animate-fade-in-up stagger-2">
+              <div className="flex flex-wrap gap-4 animate-fade-in-up stagger-2">
                 <Button size="lg" className="gap-3 px-8 py-6 text-base btn-glow bg-gradient-to-r from-primary to-accent hover:shadow-2xl hover:scale-105 transition-all" asChild>
                   <a href="#projects">
                     Let's get started <ChevronRight className="h-5 w-5" />
@@ -658,7 +659,7 @@ export default function PortfolioPage() {
               </div>
 
               {/* Tech icons showcase */}
-              <div className="opacity-0 animate-fade-in-up stagger-3">
+              <div className="animate-fade-in-up stagger-3">
                 <p className="text-sm text-muted-foreground mb-4 font-medium">Worked with</p>
                 <div className="flex flex-wrap gap-6">
                   <div className="p-3 rounded-xl bg-card/50 backdrop-blur-sm border border-border hover:border-accent transition-all hover:scale-110">
@@ -681,7 +682,7 @@ export default function PortfolioPage() {
             </div>
 
             {/* Right side - Profile photo */}
-            <div className="flex justify-center lg:justify-end opacity-0 animate-fade-in-up stagger-2">
+            <div className="flex justify-center lg:justify-end animate-fade-in-up stagger-2">
               <div className="relative w-88 h-88 md:w-[420px] md:h-[420px]">
                 {/* Gradient ring around photo */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-accent to-primary opacity-20 blur-xl animate-pulse-glow"></div>
@@ -798,7 +799,7 @@ export default function PortfolioPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROFESSIONAL_EXPERIENCE.map((role, index) => (
-              <Card key={role.title + role.company} className="card-hover h-full flex flex-col opacity-0 animate-fade-in-up" style={{ animationDelay: `${index * 0.08}s` }}>
+              <Card key={role.title + role.company} className="card-hover h-full flex flex-col animate-fade-in-up" style={{ animationDelay: `${index * 0.08}s` }}>
                 <CardHeader className="space-y-3">
                   <div className="w-fit p-3 rounded-2xl bg-accent/10 border border-accent/20 text-accent shadow-sm">
                     {role.icon}
@@ -897,7 +898,7 @@ export default function PortfolioPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ACTIVITIES.slice(0, 3).map((act, index) => (
-              <Card key={`${act.title}-${index}`} className="card-hover opacity-0 animate-fade-in-up overflow-hidden h-full flex flex-col group" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={`${act.title}-${index}`} className="card-hover animate-fade-in-up overflow-hidden h-full flex flex-col group" style={{ animationDelay: `${index * 0.1}s` }}>
                 {act.image && (
                   <div className="relative h-48 w-full bg-secondary overflow-hidden">
                     <Image
@@ -979,7 +980,7 @@ export default function PortfolioPage() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {CERTIFICATIONS.slice(0, 3).map((cert, index) => (
-                <Card key={cert.name} className="card-hover opacity-0 animate-fade-in-up overflow-hidden h-full flex flex-col group" style={{ animationDelay: `${index * 0.1}s` }}>
+                <Card key={cert.name} className="card-hover animate-fade-in-up overflow-hidden h-full flex flex-col group" style={{ animationDelay: `${index * 0.1}s` }}>
                   {cert.image && (
                     <div className="relative h-48 w-full bg-secondary overflow-hidden">
                       <Image
