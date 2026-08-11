@@ -353,7 +353,7 @@ export const CERTIFICATIONS: Array<{ name: string; issuer: string; date: string;
     issuer: '365 Data Science',
     date: '2025',
     image: '/certifications/Fully Automated MLops.png',
-    icon: <img src="/icons/365%20data%20science.ico" alt="365 Data Science" className="w-6 h-6 opacity-90" />
+    icon: <img src="/icons/365%20data%20science.png" alt="365 Data Science" className="w-6 h-6 opacity-90" />
   },
   {
     name: 'Fundamentals of Deep Learning',
@@ -374,7 +374,7 @@ export const CERTIFICATIONS: Array<{ name: string; issuer: string; date: string;
     issuer: 'Hedera',
     date: '2025',
     image: '/certifications/hedera.png',
-    icon: <img src="/icons/hedera.ico" alt="Hedera" className="w-6 h-6 opacity-90" />
+    icon: <img src="/icons/hedera.png" alt="Hedera" className="w-6 h-6 opacity-90" />
   },
   {
     name: 'Introduction to Modern AI',
