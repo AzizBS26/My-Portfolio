@@ -122,6 +122,10 @@ production.
 
 A failed build does not take the site down: the previous deployment stays live.
 
+## Live Site
+
+**[View Portfolio](https://mohamedaziz-benslima-website.vercel.app)**
+
 ## Links
 
 - **GitHub**: https://github.com/AzizBS26
